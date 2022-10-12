@@ -41,9 +41,10 @@ class UserController
     public function edit($id)
     {
         $db=new User();
-
+    
         if ($db->getRow($id)) {
             $data['row']=$db->getRow($id);
+            $data['row']=$data['row']->fetch_assoc();
             View::load('user/edit',$data);
         } else {
             echo "Error";
